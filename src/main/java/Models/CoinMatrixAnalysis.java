@@ -24,6 +24,26 @@ public class CoinMatrixAnalysis {
 
             if (Math.abs(ratio - 1) < ERROR) {
                 put(rf, 1.0);
+            } else if (Math.abs(ratio - 1.) < ERROR) {
+                put(rf, 1.0);
+            } else if (Math.abs(ratio - 1.057) < ERROR) {
+                put(rf, 1.057);
+            } else if (Math.abs(ratio - 1.110) < ERROR) {
+                put(rf, 1.110);
+            } else if (Math.abs(ratio - 1.126) < ERROR) {
+                put(rf, 1.126);
+            } else if (Math.abs(ratio - 1.173) < ERROR) {
+                put(rf, 1.173);
+            } else if (Math.abs(ratio - 1.321) < ERROR) {
+                put(rf, 1.321);
+            } else if (Math.abs(ratio - 1.470) < ERROR) {
+                put(rf, 1.470);
+            } else if (Math.abs(ratio - 1.553) < ERROR) {
+                put(rf, 1.553);
+            } else if (Math.abs(ratio - 1.324) < ERROR) {
+                put(rf, 1.324);
+            } else if (Math.abs(ratio - 1.25) < ERROR) {
+                put(rf, 1.25);
             } else {
                 throw new RatioNotFound();
             }
