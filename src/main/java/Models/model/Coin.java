@@ -5,6 +5,7 @@ package Models.model;
 public class Coin {
     private String name;
     private int val;
+    double diameter;
 
     public Coin(String name, int val) {
         this.name = name;
@@ -16,6 +17,10 @@ public class Coin {
     }
     public int getVal() {
         return val;
+    }
+
+    public double getDiameter() {
+        return diameter;
     }
 
 }
