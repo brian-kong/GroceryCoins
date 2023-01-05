@@ -12,6 +12,11 @@ public class CoinMatrixAnalysis {
     private static final double LOONIE_RADIUS = 26.5;
     private static final double TOONIE_RADIUS = 28;
     private static final double ERROR = 0.1;
+    private static String smallest;
+
+    public CoinMatrixAnalysis(String smallest) {
+        this.smallest = smallest;
+    }
 
     // group ratios using small radius as reference (hashmap is <ratio, count>)
     // need to perform checks on small-est coin value
@@ -62,7 +67,7 @@ public class CoinMatrixAnalysis {
     }
 
 
-    // get radius from list of radius
+    // get radius from list of radius (double value)
     private static double findMin(List<Integer> radiusList) {
         int minimum_Radius = Integer.MAX_VALUE;
 
@@ -71,7 +76,7 @@ public class CoinMatrixAnalysis {
                 minimum_Radius = radius;
             }
         }
-        return minimum_Radius;
+        return (double) minimum_Radius;
     }
 
 }
