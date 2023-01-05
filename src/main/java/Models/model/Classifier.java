@@ -1,5 +1,7 @@
 package Models.model;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,28 @@ public class Classifier {
         coinRatios.put(1.176, "Nickel");
     }
 
-    // Count up the total coin values given the String
+    // Classify the coins, and return each specific coin and how much coins there are
+    public HashMap<String, Integer> classify(HashMap<Double, Integer> ratios) {
+        HashMap<String, Integer> counter = new HashMap<String, Integer>();
+        counter.put("Toonie", 0);
+        counter.put("Loonie", 0);
+        counter.put("Quarter", 0);
+        counter.put("Dime", 0);
+        counter.put("Nickel", 0);
+
+        for (Map.Entry<Double, Integer> entry : ratios.entrySet()) {
+            Double key = entry.getKey();
+            Integer value = entry.getValue();
+
+            String currCoin = coinRatios.get(key);
+            int currCount = counter.get(currCoin);
+            currCount += value;
+
+            counter.put(currCoin, currCount);
+        }
+        return counter;
+    }
+    // Count up the total coin values, and return the total dollar amount
     public int counter(HashMap<String, Integer> coinCount) {
         int rf = 0;
 
@@ -59,3 +82,4 @@ public class Classifier {
         return rf;
     }
 }
+
