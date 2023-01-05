@@ -31,4 +31,5 @@ class CoinMatrixAnalysisTest {
         assertEquals(3, output.get(1.0));
 
     }
+
 }
