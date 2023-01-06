@@ -5,12 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -28,6 +27,7 @@ public class UI extends Application {
 
         Button uploadButton = new Button();
         Label uploadLabel = new Label();
+        uploadLabel.setPrefSize(100, 100);
 
         // Combobox for key list of cents
         ComboBox smallestCoinChoices = new ComboBox();
@@ -60,5 +60,26 @@ public class UI extends Application {
             }
         });
 
+        // Add in buttons/user inputs
+        Button runBotton = new Button("Count coins");
+
+        userControls.getChildren().addAll(uploadButton, uploadLabel, smallestCoinChoices);
+        result.getChildren().add(runBotton);
+        backgroundPanel.setRight(result);
+        backgroundPanel.setBottom(userControls);
+
+    }
+        // Check if comboBox exists
+        private static boolean isSmallestExist(ComboBox comboBox) {
+            if (comboBox.getValue() != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    // launch standalone Application
+    public static void main(String[] args) {
+        launch(args);
     }
 }
