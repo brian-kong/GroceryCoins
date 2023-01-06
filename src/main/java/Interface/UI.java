@@ -3,11 +3,15 @@ package Interface;
 import javafx.application.Application;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,6 +27,7 @@ public class UI extends Application {
     public void start(Stage stage) throws Exception {
 
         Button uploadButton = new Button();
+        Label uploadLabel = new Label();
 
         // Combobox for key list of cents
         ComboBox smallestCoinChoices = new ComboBox();
@@ -40,6 +45,20 @@ public class UI extends Application {
             smallestCoinChoices.getItems().add(keys.get(i));
         }
 
-        // Mouse input needed
+        // MouseEvent input needed
+        uploadButton.addEventFilter(MouseEvent.MOUSE_CLICKED, filter -> {
+            FileChooser imgUploaded = new FileChooser();
+            imgUploaded.setTitle("Uploaded Image");
+
+            File file = imgUploaded.showOpenDialog(null);
+
+            if (file != null) {
+                String imgLocation = file.toURI().toString();
+                System.out.println();
+                uploadLabel.setText(imgLocation);
+                coinImg = new Image(imgLocation);
+            }
+        });
+
     }
 }
