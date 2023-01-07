@@ -1,5 +1,7 @@
 package Interface;
 
+import Models.CoinMatrixAnalysis;
+import Models.Exceptions.RatioNotFound;
 import javafx.application.Application;
 
 import javafx.geometry.Pos;
@@ -43,8 +45,6 @@ public class UI extends Application {
 
     private static HashMap<String, Integer> coinCount = null;
     private static Integer total = null;
-    private static Mat src;
-
 
     public void start(Stage stage) throws Exception {
 
@@ -92,8 +92,19 @@ public class UI extends Application {
                 System.out.println(imgLocation.substring(5));
 
                 Mat src = Imgcodecs.imread(imgLocation.substring(5), IMREAD_COLOR);
-                System.out.println(ScanCoin.findCoins(src).toString());
+                ArrayList<Integer> sizes = ScanCoin.findCoins(src);
 
+                HashMap<Double, Integer> coins = null;
+
+                try {
+                    coins = CoinMatrixAnalysis.countRatio(sizes);
+                } catch (RatioNotFound e) {
+
+                }
+
+                String smallestCoinName = "";
+
+                // TODO
             }
 
             else if (imgLocation == null) {
