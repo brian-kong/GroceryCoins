@@ -1,16 +1,24 @@
 package Interface;
 
 import javafx.application.Application;
+
 import javafx.geometry.Pos;
+
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx. scene.text.Text;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,6 +30,8 @@ import nu.pattern.OpenCV;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.core.Mat;
 
+import openCV.ScanCoin;
+
 public class UI extends Application {
     private static BorderPane backgroundPanel = new BorderPane();
     public static Image coinImg;
@@ -32,6 +42,7 @@ public class UI extends Application {
 
     private static HashMap<String, Integer> coinCount = null;
     private static Integer total = null;
+    private static Mat src;
 
     public void start(Stage stage) throws Exception {
 
@@ -67,7 +78,7 @@ public class UI extends Application {
                 imgLocation = file.toURI().toString();
                 System.out.println("img uploaded");
                 coinImg = new Image(imgLocation);
-                Mat src = Imgcodecs.imread(imgLocation);
+                src = Imgcodecs.imread(imgLocation);
             }
         });
 
@@ -76,6 +87,12 @@ public class UI extends Application {
         runBotton.addEventFilter(MouseEvent.MOUSE_CLICKED, filter -> {
             if (smallestCoinChoices.getValue() != null && imgLocation != null){
                 System.out.println("success");
+
+                // Add in other classes
+
+                ArrayList<Integer> coinResults = ScanCoin.findCoins(src);
+                System.out.println(coinResults.toString());
+
             }
 
             else if (imgLocation == null) {
