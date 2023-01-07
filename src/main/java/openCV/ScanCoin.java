@@ -74,10 +74,10 @@ public class ScanCoin{
 
         return list;
     }
+}
 
 
-
-    public static void main(String[] args) throws InterruptedException {
+ /*   public static void main(String[] args) throws InterruptedException {
         OpenCV.loadShared();
         String file = "src/main/java/resources/image2.jpg";
 
@@ -86,3 +86,4 @@ public class ScanCoin{
 
     }
 }
+*/
