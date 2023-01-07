@@ -1,6 +1,7 @@
 package Interface;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -67,6 +68,8 @@ public class UI extends Application {
         result.getChildren().add(runBotton);
         backgroundPanel.setRight(result);
         backgroundPanel.setBottom(userControls);
+
+        Scene inputScene = new Scene(backgroundPanel, 400, 500);
 
     }
         // Check if comboBox exists
