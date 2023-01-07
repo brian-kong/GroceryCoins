@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="GroceryCoins">
+    <output-path>$PROJECT_DIR$/out/artifacts/GroceryCoins</output-path>
+    <root id="root">
+      <element id="archive" name="GroceryCoins.jar">
+        <element id="module-output" name="GroceryCoins" />
+      </element>
+    </root>
+  </artifact>
+</component>

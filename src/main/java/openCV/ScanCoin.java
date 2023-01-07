@@ -1,6 +1,7 @@
 package openCV;
 
 
+import nu.pattern.OpenCV;
 import org.opencv.core.Mat;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class ScanCoin{
         Mat circles = new Mat();
         Mat proc = new Mat();
 
-        // Saven an image to a specific file
+        // Save an image to a specific file
         if (renderSteps) Imgcodecs.imwrite("in.jpg", mat);
 
         // convert an image from one color space to gray
@@ -77,14 +78,3 @@ public class ScanCoin{
     }
 }
 
-
- /*   public static void main(String[] args) throws InterruptedException {
-        OpenCV.loadShared();
-        String file = "src/main/java/resources/image2.jpg";
-
-        Mat src = Imgcodecs.imread(file, IMREAD_GRAYSCALE);
-        System.out.println(findCoins(src).toString());
-
-    }
-}
-*/

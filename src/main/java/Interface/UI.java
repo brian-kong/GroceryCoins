@@ -2,6 +2,8 @@ package Interface;
 
 import Models.CoinMatrixAnalysis;
 import Models.Exceptions.RatioNotFound;
+import Models.model.Classifier;
+
 import javafx.application.Application;
 
 import javafx.geometry.Pos;
@@ -23,10 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 import nu.pattern.OpenCV;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -42,6 +41,7 @@ public class UI extends Application {
     private static VBox result = new VBox();
     private static String imgLocation;
     private TableView resultTable = new TableView();
+    private static Integer smallestCoinValue = null;
 
     private static HashMap<String, Integer> coinCount = null;
     private static Integer total = null;
@@ -86,6 +86,8 @@ public class UI extends Application {
         Button runBotton = new Button("Count coins");
         runBotton.addEventFilter(MouseEvent.MOUSE_CLICKED, filter -> {
             if (smallestCoinChoices.getValue() != null && imgLocation != null){
+
+                smallestCoinValue = dictionary.get(smallestCoinChoices.getValue());
                 System.out.println("success");
 
                 // Add in other classes
@@ -104,8 +106,29 @@ public class UI extends Application {
 
                 String smallestCoinName = "";
 
-                // TODO
+                switch (smallestCoinValue) {
+                    case 5: smallestCoinName = "Nickel"; break;
+                    case 10: smallestCoinName = "Dime"; break;
+                    case 25: smallestCoinName = "Quarter"; break;
+                    case 1: smallestCoinName = "Loonie"; break;
+                    case 2: smallestCoinName = "Toonie"; break;
+                }
+
+                Classifier classifier = new Classifier(coins, smallestCoinName);
+
+                coinCount = classifier.classify(coins);
+                total = classifier.counter(coinCount);
+
+                System.out.println();
+
+                for (Map.Entry<String, Integer> entry :coinCount.entrySet()) {
+                    String key = entry.getKey();
+                    int value = entry.getValue();
+                    System.out.println("Coin Type:" + key + "Amount:" + value);
+                }
+
             }
+
 
             else if (imgLocation == null) {
                 final Stage popUp = new Stage();
@@ -129,7 +152,6 @@ public class UI extends Application {
             }
         });
 
-        Integer smallestCoinValue = dictionary.get(smallestCoinChoices.getValue());
         userControls.getChildren().addAll(filler, uploadButton, smallestCoinChoices, runBotton);
 
         result.setAlignment(Pos.CENTER);
