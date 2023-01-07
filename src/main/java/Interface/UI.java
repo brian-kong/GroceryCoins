@@ -31,6 +31,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.core.Mat;
 
 import openCV.ScanCoin;
+import static org.opencv.imgcodecs.Imgcodecs.IMREAD_COLOR;
 
 public class UI extends Application {
     private static BorderPane backgroundPanel = new BorderPane();
@@ -43,6 +44,7 @@ public class UI extends Application {
     private static HashMap<String, Integer> coinCount = null;
     private static Integer total = null;
     private static Mat src;
+
 
     public void start(Stage stage) throws Exception {
 
@@ -77,8 +79,6 @@ public class UI extends Application {
                 OpenCV.loadShared();
                 imgLocation = file.toURI().toString();
                 System.out.println("img uploaded");
-                coinImg = new Image(imgLocation);
-                src = Imgcodecs.imread(imgLocation);
             }
         });
 
@@ -89,9 +89,10 @@ public class UI extends Application {
                 System.out.println("success");
 
                 // Add in other classes
+                System.out.println(imgLocation.substring(5));
 
-                ArrayList<Integer> coinResults = ScanCoin.findCoins(src);
-                System.out.println(coinResults.toString());
+                Mat src = Imgcodecs.imread(imgLocation.substring(5), IMREAD_COLOR);
+                System.out.println(ScanCoin.findCoins(src).toString());
 
             }
 
