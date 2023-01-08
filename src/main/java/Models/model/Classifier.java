@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Classifier {
 
-    private HashMap<Double, String> coinRatios;
+    private static HashMap<Double, String> coinRatios;
     private HashMap<Double, Integer> ratioCount;
     private String smallest;
 

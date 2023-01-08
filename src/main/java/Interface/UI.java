@@ -39,7 +39,7 @@ public class UI extends Application {
     public static Image coinImg;
     private static HBox userControls = new HBox(22.5);
     private static VBox result = new VBox();
-    private static String imgLocation;
+    private static String imgLoc;
     private TableView resultTable = new TableView();
     private static Integer smallestCoinValue = null;
 
@@ -71,29 +71,29 @@ public class UI extends Application {
 
         // MouseEvent input needed
         uploadButton.addEventFilter(MouseEvent.MOUSE_CLICKED, filter -> {
-            FileChooser imgUploaded = new FileChooser();
-            imgUploaded.setTitle("Uploaded Image");
-            File file = imgUploaded.showOpenDialog(null);
+            FileChooser imgUploader = new FileChooser();
+            imgUploader.setTitle("Upload Image");
+            File file = imgUploader.showOpenDialog(null);
 
             if (file != null) {
                 OpenCV.loadShared();
-                imgLocation = file.toURI().toString();
-                System.out.println("img uploaded");
+                imgLoc = file.toURI().toString();
+                System.out.println("img upload");
             }
         });
 
-        // Add in buttons/user inputs
+        // Add in buttons/user inputs/classes interaction
         Button runBotton = new Button("Count coins");
         runBotton.addEventFilter(MouseEvent.MOUSE_CLICKED, filter -> {
-            if (smallestCoinChoices.getValue() != null && imgLocation != null){
+            if (smallestCoinChoices.getValue() != null && imgLoc != null){
 
                 smallestCoinValue = dictionary.get(smallestCoinChoices.getValue());
                 System.out.println("success");
 
                 // Add in other classes
-                System.out.println(imgLocation.substring(5));
+                //System.out.println(imgLocation.substring(5));
 
-                Mat src = Imgcodecs.imread(imgLocation.substring(5), IMREAD_COLOR);
+                Mat src = Imgcodecs.imread(imgLoc.substring(5), IMREAD_COLOR);
                 ArrayList<Integer> sizes = ScanCoin.findCoins(src);
 
                 HashMap<Double, Integer> coins = null;
@@ -130,7 +130,7 @@ public class UI extends Application {
             }
 
 
-            else if (imgLocation == null) {
+            else if (imgLoc == null) {
                 final Stage popUp = new Stage();
                 popUp.initModality(Modality.APPLICATION_MODAL);
                 popUp.initOwner(stage);
@@ -170,6 +170,9 @@ public class UI extends Application {
         backgroundPanel.setCenter(result);
 
         Scene inputScene = new Scene(backgroundPanel, 400, 500);
+
+        stage.setScene(inputScene);
+        stage.show();
 
 
     }
