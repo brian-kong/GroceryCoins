@@ -9,6 +9,9 @@ I thought what if she had an application that could count the coins in a snap. T
 Nowadays, my mother is starting to have difficulty seeing objects close-by. After having a similar incident at a
 grocery store, I thought about developing this tiny-application to help count coins in a split second (or 10 seconds).
 
+<p>
+<img src = "https://github.com/brian-kong/GroceryCoins/blob/master/src/main/java/resources/CoinResult.jpg" width = "350px" height = "auto"
+
 # What it does/built with (KEY FEATURE):
 
 Using the OpenCV library, it takes an image (pre-process through greyscale, Canny Edge algorithm, and Gaussian blur) and
