@@ -10,7 +10,9 @@ Nowadays, my mother is starting to have difficulty seeing objects close-by. Afte
 grocery store, I thought about developing this tiny-application to help count coins in a split second (or 10 seconds).
 
 <p>
+<img src = "https://github.com/brian-kong/GroceryCoins/blob/master/src/main/java/resources/image2.jpg" width = "350px" height = "auto"
 <img src = "https://github.com/brian-kong/GroceryCoins/blob/master/src/main/java/resources/CoinResult.jpg" width = "350px" height = "auto"
+</p>
 
 # What it does/built with (KEY FEATURE):
 
