@@ -9,6 +9,7 @@ I thought what if she had an application that could count the coins in a snap. T
 Nowadays, my mother is starting to have difficulty seeing objects close-by. After having a similar incident at a
 grocery store, I thought about developing this tiny-application to help count coins in a split second (or 10 seconds).
 
+## Screenshots
 <p>
 <img src = "https://github.com/brian-kong/GroceryCoins/blob/master/src/main/java/resources/image2.jpg" width = "350px" height = "auto">
 <img src = "https://github.com/brian-kong/GroceryCoins/blob/master/src/main/java/resources/CoinResult.jpg" width = "350px" height = "auto">
@@ -20,21 +21,20 @@ Using the OpenCV library, it takes an image (pre-process through greyscale, Cann
 returns a list of circles in the image via their radius through HoughCircles algorithm. Then, the circle radiuses is used
 to determine the coin and value through their given size.
 
-# Challenges ran into:
+# Challenges I ran into:
 
 1. Figuring out a robust pre-processing algorithm 
-2. Dependency issues with javafx/maven
-3. 
+2. Dependency issues with javafx/maven 
 
 # What I learned
 
-1. Understanding OpenCV library for Java
+1. Learning OpenCV library for Java
 2. Further experience with Maven
 3. Getting a working prototype up
-4. Re-learning java syntax/general design patterns
+4. Re-learning java syntax/general design patterns (singleton/iterator)
 
-# What's next:
+# What's next (to improve):
 
-1. Add in machine learning neural networks to identify coin (increase reliability/reduce variance)- tradeoff of bias/variance
-
+1. Add in machine learning neural networks to identify coin (increase reliability/reduce variance)
+  - tradeoff of bias/variance
 
